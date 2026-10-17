@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ☁️ SkyNow – Weather App
 
-## Getting Started
+A simple, responsive weather application built with **Next.js** and **Tailwind CSS**.
+It uses the free [Open-Meteo API](https://open-meteo.com/) (no API key required) to show
+live weather data for any city in the world.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Current **temperature**, **humidity** and **wind speed**
+- **Time** of the last reading and the data update **interval**
+- Search any city (Open-Meteo Geocoding API); default city is Dhaka
+- 4 pages: **Home**, **About**, **Services**, **Contact**
+- Reusable **Header** and **Footer** components with navigation
+- Fully **responsive** design (mobile, tablet, desktop) with a mobile menu
+- Loading and error states for API requests
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+| --- | --- |
+| [Next.js](https://nextjs.org/) (App Router) | Framework and routing |
+| [Tailwind CSS](https://tailwindcss.com/) | Styling and responsive layout |
+| [Open-Meteo Forecast API](https://open-meteo.com/en/docs) | Weather data |
+| [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api) | City search |
+
+## 📁 Project Structure
+
+```
+weather-app/
+├── app/
+│   ├── layout.js          # Root layout (Header + Footer)
+│   ├── page.js            # Home page
+│   ├── globals.css        # Tailwind styles
+│   ├── about/page.js      # About page
+│   ├── services/page.js   # Services page
+│   └── contact/page.js    # Contact page (form)
+├── components/
+│   ├── Header.js          # Navigation bar
+│   ├── Footer.js          # Footer
+│   ├── WeatherCard.js     # Weather display + city search
+│   └── AboutSection.js    # About section on the Home page
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Node.js](https://nodejs.org/) 18 or later
+- npm
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# 1. Clone the repository
+git clone https://github.com/<your-username>/weather-app.git
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 2. Go to the project folder
+cd weather-app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 3. Install dependencies
+npm install
 
-## Deploy on Vercel
+# 4. Start the development server
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Production build
+
+```bash
+npm run build
+npm start
+```
+
+## 🌐 API Used
+
+Weather data request:
+
+```
+https://api.open-meteo.com/v1/forecast
+  ?latitude=23.81&longitude=90.41
+  &current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code
+  &timezone=auto
+```
+
+City search request:
+
+```
+https://geocoding-api.open-meteo.com/v1/search?name=London&count=1
+```
+
+## 📄 Pages
+
+| Page | Route | Description |
+| --- | --- | --- |
+| Home | `/` | Weather display and About section |
+| About | `/about` | Short description of the app |
+| Services | `/services` | Weather-related features |
+| Contact | `/contact` | Simple contact form |
+
+## 👤 Author
+
+Your Name – [GitHub](https://github.com/<your-username>)
+
+## 🙏 Acknowledgements
+
+Weather data provided by [Open-Meteo](https://open-meteo.com/).
